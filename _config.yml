@@ -1,0 +1,5 @@
+  name: Christian Brickhouse
+  institution: Stanford
+  email: brickhouse@stanford.edu
+  markdown: kramdown
+  permalink: /weblog/:year/:month/:day/:title
