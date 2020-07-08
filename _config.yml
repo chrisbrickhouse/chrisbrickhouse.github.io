@@ -1,5 +1,14 @@
-  name: Christian Brickhouse
-  institution: Stanford
-  email: brickhouse@stanford.edu
+  title: Christian Brickhouse
   markdown: kramdown
   permalink: /weblog/:year/:month/:day/:title
+  theme: minima
+  author: Christian Brickhouse
+  email: brickhouse@stanford.edu
+  minima:
+    skin: dark
+    social_links:
+      github: christbrickhouse
+      twitter: iamabrickhouse
+  header_pages:
+    - research/index.md
+    - about/index.md
