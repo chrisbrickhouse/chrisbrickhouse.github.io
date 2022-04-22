@@ -2,50 +2,31 @@
 layout: page
 title: Research projects
 ---
-## Dissertation work (Embodying the Lexicon)
-My dissertation work investigates the implications of exemplar-based theories of word recognition and how these can inform
-sociolinguistic theories of embodiment. Exemplar-based models hypothesize that memories of linguistic experiences are detailed 
-and can store more than just the linguistic signal. While strong versions of the theory would predict that all information is 
-retained, evidence suggests that what gets retain is in fact filtered to some degree. For example, Bradlow, et al., (1999) 
-found that listeners remembered words better when they were spoken in the same voice or at the same speaking rate, but not 
-when spoken at the same amplitude (loudness). However listeners were able to notice the difference in loudness when asked,
-suggesting that not all information is retained. Sommers & Barcroft (2006) theorized that only information useful for
-interpreting the phonetic signal was remembered, but this proved too restrictive. Pufahl & Samuel (2014) found that listeners 
-retain contextual noises such as dog barks and phone rings, and performance on later word recognition tasks was worse if the 
-irrelevant contextual noises were removed. While linguistic memories are selective, they are not so selective that context 
-like dogs barking is filtered out.
+## Dissertation work (Discourse of US Supreme Court Oral Argument)
+Discourse occurs in a variety of genres, and "institutional discourse" comprises a broad genre of speech activity. In institutional discourses, 
+speakers interact within the context of a particular institution, and participants orient to institutional roles and tasks which are relevant
+for the given institution. The central question of my dissertation work is how power asymmetries in institutional roles and institutional 
+structures manifest discursively in interaction. Power, I argue, is performed, and participants may orient to and draw upon institutional 
+tools in order to control discussions through a combination of structural and linguistic resources.
 
-So where are the edges? Clearly *acoustic* context is taken into account, and this makes sense given the oral languages 
-being tested. But people use language in a variety of contexts rich with sights, smells, tastes, and touch. Acoustic context
-alone is still quite narrow, but it implies these other sensory modes may be incorporated into linguistic memories as well.
-Research has shown convincingly that visual context is taken into account. Johnson, et al., (1999) showed that visual cues 
-to gender can affect perceptual boundaries between vowels. Koops, et al., (2008) and Rubin (1992) showed that processing 
-can be impaired when visual information does not match phonetically cued social variation. Conversely, processing can be 
-facilitated when visual information and phonetic cues are aligned (McGowan, 2011; Szakay et al., 2012). I'm unaware of 
-studies into smell or taste with regards to speech perception, and while touch, as it relates to proprioception of the 
-articulators, has been studied in the context of motor theories of speech perception, we feel more than just our mouths 
-when we converse. Goldinger & Hansen (2005) showed that physical sensation (a vibrating chair) can facilitate recall of
-written words and other visual stimuli, but how this relates to spoken word recognition is an open question.
+To explore the relationship between institutional roles and discourse structure, my dissertation analyzes US Supreme Court oral arguments. 
+Oral arguments take place before a well-defined committee structure with explicit institutional roles and unparalleled power differentials. 
+Justices of the Court are appointed for lifetime terms, and so the corpus captures numerous discourses across years of an individual’s life. 
+The Court and its justices additionally have unmatched political power as the outcomes of their institutional discourses become the supreme 
+law of the land for a nuclear-armed state. This power manifests discursively as well, for example, the speech of non-justices is strictly 
+regimented with limited if any speaker rights. The stakes of these discourses are uniquely high, so the effects of power should be particularly 
+apparent in these cases as speakers have major incentives to control the discourse and exercise their power. 
 
-I'm particularly interested in the haptic (touch) components of linguistic memories given its relation to emerging 
-sociolinguistic theories of embodiment. Broadly, embodied argues that cultures produce corporeal restrictions and that when
-an individual enters into these spaces, their actions are negotiated within the context of these prexisting bodily
-practices (Butler, 1988). As an example, tattoos are a way of embodying particular cultural symbols of personal or communal
-significance. The cultural pressure to acquire (or avoid) a tattoo is a corporeal restriction, and individuals--rather than
-making decision completely independently--negotiate their choice to get a tattoo in the context of this pre-existing social
-norm. Within sociolinguistics, this theory has been extended to incorporate the ways in which language is produced by bodies.
-The corporeal restrictions imposed on bodies within a cultural context affect the same bodies that produce and perceive 
-language. With this in mind, Pratt & D'Onofrio (2017) present the interesting question: what is the role of the body in 
-sound change?
+How does this power manifest discursively in this context? What features do participants employ and for what purposes? What is the range 
+of individual variation in discourse style?
 
-My dissertation work plans to connect these two theoretical lines of reasoning by demonstrating the role of haptic context
-in linguistic processing. While previous work on linguistic embodiment has focused on the causal relationship between posture
-and articulation, the broader theory of embodied social practice predicts that listeners are also embodying social roles
-and that this embodiment affects the way a listener interacts with and interprets the world. As patterns of practice, the
-theory implicates patterns of exposure to particular word forms, accents, and language variation. If these embodied social 
-practices are remembered alongised linguistic events, then we should see recognition improve when embodied contexts and 
-linguistic forms align. Whether these predictions hold true will help motivate further theory in speech perception and
-sociolinguistics.
+As of early 2022, my work focuses on Elana Kagan. Justice Kagan served as US Solicitor General from 2009 until her appointment to the Supreme Court 
+in 2010. As Solicitor General, Kagan argued before the Supreme Court on behalf of the executive branch of the United States government. From an 
+analytic view, Kagan serves as an interesting case study. She is the only woman to have argued before the same Court she joined, and the only justice
+to have represented the US government before the Court. As such the corpus contains Kagan's speech on both sides of the bench within months of
+each other. From a sociolinguistic perspective, her career represents a period of growing power for women in constitutional law. The first woman to 
+become Solicitor General, Kagan's appointment to the Court brought the number of women on the bench to 3; its highest ever. Kagan has so far 
+proven to be an interesting case study for how changes in insitutional roles and power are reflected in discourse styles and practices.
 
 ## Voices of California
 The [Voices of California project](http://web.stanford.edu/dept/linguistics/VoCal/index.html) is a multi-year dialect
