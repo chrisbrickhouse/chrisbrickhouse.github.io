@@ -4,14 +4,24 @@
   theme: minima
   author: Christian Brickhouse
   email: brickhouse@stanford.edu
-  minima:
-    skin: dark
-    social_links:
-      github: christbrickhouse
-      twitter: iamabrickhouse
+  show_excerpts: true
+  github_username: chrisbrickhouse
+  git_repo: chrisbrickhouse.github.io
+  twitter_username: iamabrickhouse
+  mastodon:
+  - username: iamabrickhouse
+    instance: fosstodon.org
   header_pages:
     - research/index.md
     - cv/index.md
     - about/index.md
     - software/index.md
     - about/free-culture.md
+
+  defaults:
+    - 
+      scope: 
+        path: "_posts"
+      values:
+        layout: "post"
+        author: "Christian Brickhouse"

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Regular expressions tutorial"
+excerpt: "I like regular expressions. Constructing a regular expression is like solving a puzzle, and they are a powerful tool for lots of situations. In my work on Chess software for MediaWiki, we use regular expressions to validate chess game files before commiting to the full parser in order to save resources. These game files are complex, but as a file format highly regular and well defined. I thought it would be useful to write up some similar advice I gave to another graduate student."
 
 date: 2021-09-14
 ---
