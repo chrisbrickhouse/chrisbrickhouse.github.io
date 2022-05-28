@@ -15,8 +15,6 @@
     - research/index.md
     - cv/index.md
     - about/index.md
-    - software/index.md
-    - about/free-culture.md
 
   defaults:
     - 

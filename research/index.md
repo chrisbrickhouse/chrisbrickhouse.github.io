@@ -2,7 +2,13 @@
 layout: page
 title: Research projects
 ---
-## Dissertation work (Discourse of US Supreme Court Oral Argument)
+Abstracts of my ongoing research projects are below. You might find more details by checking [my preprints page](./preprints) for related working papers. Some are also associated with [the software packages I maintain](../software).
+* [Dissertation work](#discourse-of-us-supreme-court-oral-argument)
+* [Voices of California fieldwork](#voices-of-california)
+* [Proto-Pahtorui River language](#ende)
+* [Wikis and netnography](#social-dynamics-of-wikis)
+
+## Discourse of US Supreme Court Oral Argument
 Discourse occurs in a variety of genres, and "institutional discourse" comprises a broad genre of speech activity. In institutional discourses, 
 speakers interact within the context of a particular institution, and participants orient to institutional roles and tasks which are relevant
 for the given institution. The central question of my dissertation work is how power asymmetries in institutional roles and institutional 
