@@ -3,7 +3,7 @@
   permalink: /weblog/:year/:month/:day/:title
   theme: minima
   author: Christian Brickhouse
-  email: brickhouse@stanford.edu
+  email: me@christianbrickhouse.com
   show_excerpts: true
   github_username: chrisbrickhouse
   git_repo: chrisbrickhouse.github.io
@@ -13,7 +13,7 @@
     instance: fosstodon.org
   header_pages:
     - research/index.md
-    - cv/index.md
+    - cv/resume.md
     - about/index.md
 
   defaults:

@@ -1,94 +1,24 @@
 ---
 layout: page
-title: Research projects
+title: Research
 ---
-Abstracts of my ongoing research projects are below. You might find more details by checking [my preprints page](./preprints) for related working papers. Some are also associated with [the software packages I maintain](../software).
-* [Dissertation work](#discourse-of-us-supreme-court-oral-argument)
-* [Voices of California fieldwork](#voices-of-california)
-* [Proto-Pahtorui River language](#ende)
-* [Wikis and netnography](#social-dynamics-of-wikis)
 
-## Discourse of US Supreme Court Oral Argument
-Discourse occurs in a variety of genres, and "institutional discourse" comprises a broad genre of speech activity. In institutional discourses, 
-speakers interact within the context of a particular institution, and participants orient to institutional roles and tasks which are relevant
-for the given institution. The central question of my dissertation work is how power asymmetries in institutional roles and institutional 
-structures manifest discursively in interaction. Power, I argue, is performed, and participants may orient to and draw upon institutional 
-tools in order to control discussions through a combination of structural and linguistic resources.
+Some questions that motivate my research:
+- How does language vary and change?
+- How do people use language variation as a part of their personal style? 
+- How do we build tools that are sensitive to these stylistic differences?
 
-To explore the relationship between institutional roles and discourse structure, my dissertation analyzes US Supreme Court oral arguments. 
-Oral arguments take place before a well-defined committee structure with explicit institutional roles and unparalleled power differentials. 
-Justices of the Court are appointed for lifetime terms, and so the corpus captures numerous discourses across years of an individual’s life. 
-The Court and its justices additionally have unmatched political power as the outcomes of their institutional discourses become the supreme 
-law of the land for a nuclear-armed state. This power manifests discursively as well, for example, the speech of non-justices is strictly 
-regimented with limited if any speaker rights. The stakes of these discourses are uniquely high, so the effects of power should be particularly 
-apparent in these cases as speakers have major incentives to control the discourse and exercise their power. 
+## Supporting the linguistics community through software
+Modern research relies on computer software to automate data extraction and analysis, and this software doesn't write itself. Within my field of sociolinguistics, researchers rely on a set of tools which time-align transcripts to speech sounds (forced alignment) and perform acoustic analyses of the speech sounds identified. One common tool is the Forced Alignment and Vowel Extraction (FAVE) package developed around the turn of the millenium in part for work on Philadelphia English. While FAVE is relatively ubiquitous in sociolinguistics research there are three main problems:
+1. A transcript is required, but transcription is time consuming and expensive. This is a bottleneck in research, and contemporary transcription tools are not well suited to this task out-of-the-box.
+2. The system is biased towards particular North American English accents. Using the software on Englishes from Europe or Asia often leads to errors which can cause incorrect findings.
+3. The software is old and difficult to maintain leading to lost time as research teams need to fix errors.
 
-How does this power manifest discursively in this context? What features do participants employ and for what purposes? What is the range 
-of individual variation in discourse style?
+I have worked to address these shortcomings in various ways. Reducing the research bottleneck, I have built an interface for researchers which allows them to transcribe their data using langauge models optimized for the data we frequently encounter. Sociolinguists often work with conversational data, and this includes overlaps, stutters, ums-and-uhs, and other disfluencies which are important data points. Most popular language models are optimized for transcribing a speech or narrative rather than a conversation, and they tend to discard disfluencies. I tested and selected open source language models which can reliably identify different speakers and retain disfluencies, with a focus on speakers of non-standard Englishes. For the data extraction and measurement stage, I work with Josef Freuhwald (University of Kentucky) on a system which is language agnostic so that researchers of any language can have a standard, reliable data pipeline. While these and other software projects are in the works, I updated and maintained the legacy version as a stop-gap for researchers. I migrated the prior code base to Python 3, implemented tests and a CI/CD pipeline, and introduced a build system for distribution via PyPI to simplify user installation. By providing a consistent, reliable, and standard set of tools for end-to-end processing of sociolinguistic data, researchers can save time using a solution that just works, and the community can be more confident in research results because the pipeline used is open and easily inspected to ensure programming errors are not a confound. 
 
-As of early 2022, my work focuses on Elana Kagan. Justice Kagan served as US Solicitor General from 2009 until her appointment to the Supreme Court 
-in 2010. As Solicitor General, Kagan argued before the Supreme Court on behalf of the executive branch of the United States government. From an 
-analytic view, Kagan serves as an interesting case study. She is the only woman to have argued before the same Court she joined, and the only justice
-to have represented the US government before the Court. As such the corpus contains Kagan's speech on both sides of the bench within months of
-each other. From a sociolinguistic perspective, her career represents a period of growing power for women in constitutional law. The first woman to 
-become Solicitor General, Kagan's appointment to the Court brought the number of women on the bench to 3; its highest ever. Kagan has so far 
-proven to be an interesting case study for how changes in insitutional roles and power are reflected in discourse styles and practices.
+## Speech in non-urban California
+Most research into how Californians talk focuses on residents of large, coastal cities. In my PhD program I researched how Californians *outside* the urban centers talk, going to towns across the state and doing oral history interviews with life-long residents of these communities. With Rob Podesva (Stanford University) I found that speakers in these communities used different parts of the "California" accent to signal aspects of their personality and values, and that this differed across the state based on differences in these communities. For example, the Latinx communities in Bakersfield and Merced are long-established and a large proportion of the local populations, but while they are similar, not all Latinx speakers or communities are the same. I found evidence that speakers in these communities differ in how they pronounce the "a" sound in "trap" and "tram", and these differences relate to how Latinx identity is performed in these different communities. This and other findings demonstrate that our understanding of language in California is impoverished when we do not consider the racial and geographic diversity of communities in the state.
 
-## Voices of California
-The [Voices of California project](http://web.stanford.edu/dept/linguistics/VoCal/index.html) is a multi-year dialect
-survey of non-urban speech throughout California. From 2017 until its pandemic-induced hiatus in 2019, I served as a
-fieldworker interviewing and recruiting participants. When not performing fieldwork, I have contributed to the analysis of
-data and the construction of the corpus.
+## History of a family of languages in Papua New Guinea
+Kate Lindsey (Boston University) and colleagues have recently documented a family of languages in southern Papua New Guinea along the Pahoturi River. These languages share a common ancestor, but we don't know where that common ancestor was spoken or how it was related to other languages in the area. One hypothesis is that speakers of these languages moved North from Australia. Another hypothesis is that speakers moved South from other parts of Papua New Guinea. To find evidence for these historical migrations, I have been reconstructing the common ancestor of these languages and evaluating which neighboring languages share traits with the reconstructed language. I have focused on a series of sounds, /kw/ and /gw/, which linguists call *labialized velars*. These sounds are found in some neighbors of the Pahoturi River languages, and some contemporary Pahoturi River languages have these sounds too. Were these sounds borrowed into Pahoturi languages from neighbors, or were these sounds in their common ancestor? If the sounds were in the common ancestor of the Pahoturi River languages, then it suggests that these languages are related to their Papuan neighbors rather than their Australian neighbors. By comparing the contemporary Pahoturi River languages, I showed that we can build a phylogenetic tree relating all the contemporary languages to a common ancestor through a series of language changes that happened in some communities but not others. Based on this evidence and previous work, I argue in favor of the Papuan hypothesis over the Australian hypothesis. 
 
-### The low back merger in California English
-My second qualifying paper used the data from five field sites to revisit the claim that Californians have a merger in 
-production between the LOT and THOUGHT vowels. Better known as the cot-caught merger, previous work has found significant overlap in
-formant frequencies among Californians, but work on other mergers across North America has found that vowel classes which appear
-to have merged along the first and second formants may still differ on a third dimension such as dynamism, length, or vowel quality.
-Using the Voices of California data, I replicated previous findings of convergence in first and second formants, developed a novel
-method to anaylze whether the formant trajectories of the vowels were converging in both formants simultaneously, and analyzed
-whether the vowel classes were diverging in length. The paper, in preparation to be submitted, presents evidence that while the 
-formants of the vowels are converging over apparent time, they are simultaneously diverging in length suggesting that our previous 
-claims of merger should be revisted with more scrutiny.
-
-### Indexicality of variation in Latinx Californians
-With other members of the Voices of California project, we analyzed how Latinx speakers in our sample use aspects of the 
-California Vowel Shift to construct identity and convey social meaning. At the 2020 Meeting of the American Dialect Society, 
-I presented joint work investigating how the phonetic and phonological patterning of the TRAP vowel is used by Latinx Salinas 
-speakers to index their orientation towards town or country ideologies (in many ways similar to Paul Reed's "rootedness"). Among 
-white Californians, TRAP shows a pronounced nasal split, where the vowel is raised before nasals and backed elsewhere. The backing 
-pattern is seen amon Latinx Californians in our data, but the nasal split is less common. Our data show that among Latinx speakers, 
-more "country" oriented speakers show a smaller difference between prenasal and non-nasal low-front vowels. This finding is the reverse 
-of what has been foud among white speakers. We argue that this pattern shows that depending on the particular social landscape a 
-language is enbedded within, the same change can acquire different indexical values.
-
-### Where's the line between NorCal and SoCal?
-As part of our interview process, participants are given a map of California and asked to draw lines indicating where they think
-the major divisions are in the state. In most cases, participants divide the state into Northern and Southern section, and sometimes
-include a "Central" section. With other project members and help from the Stanford Geology Library staff, I documented a workflow
-for the digitization of these and future maps so that we can analyze them in a geographic information system (GIS). Using GIS software
-we are able to analyze how conceptions of NorCal and SoCal vary across the state. Based on visual impressions so far, participants 
-tend to draw the dividing line close to where they live. For speakers in southern California, they tend to place the line north of 
-themselves, while speakers in northern California tend to draw the line just south of themselves. The GIS software also produces some
-[nice looking maps](http://web.stanford.edu/~ctb77/AllFieldsitesMap.png).
-
-## Ende
-Ende (ISO 639: `kit`) is a Pahoturi River language spoken in southwestern Papua New Guinea. To the field's detriment, many of our 
-sociolinguistic theories of language change are not robustly tested on data from understudied languages. Along with Kate Lindsey and
-other field workers in the area, I have started a number of projects using their data to investigate changes in Ende and its 
-relationship to its sprachbund neighbors. Most recently I have been helping with a comparative analysis of the Pahoturi River 
-languages to better understand their historical relationship to each other and hopefully their connection to other language families.
-
-My main work has been on invetigating a pattern of nasal elision in an Ende copula which is socially patterned and potentially a 
-change in progress. Like in California's low-back vowels, it is not clear whether a distinction was lost or whether it has moved 
-to a different dimension. Our work so far has been investigating the quality of the nasal consonant and whether the change 
-represents a categorical loss or a phonetic reduction. Using acoustic measurments as articulatory proxies we find evidence that 
-suggests the tongue-tip gesture in /n/ is not lost, but reduced. Further work will examine the velar gesture and the quality of 
-the preceding vowel to determine whether the vowel is becoming nasalized due to the consonant weakening.
-
-## Social dynamics of wikis
-As part of [my contributions to free culture](../about/free-culture.md) I study the communities and organizations in which I 
-participate with the goal of applying my findings to the problems we face. My work in this area tends to focus on how internet
-communities function and the social dynamics that constrain how they grow and change. At the 2021 Wikimania, a global conference
-for wiki editors, I presented the results of my research on page protection and motivated a theory of how wikis respond to 
-rapid growth.
