@@ -12,9 +12,10 @@
   - username: iamabrickhouse
     instance: fosstodon.org
   header_pages:
-    - research/index.md
-    - cv/resume.md
     - about/index.md
+    - cv/resume.md
+    - software/index.md
+    - research/index.md
 
   defaults:
     - 
