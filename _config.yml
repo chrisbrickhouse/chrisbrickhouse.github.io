@@ -13,9 +13,7 @@
     instance: fosstodon.org
   header_pages:
     - about/index.md
-    - cv/resume.md
-    - software/index.md
-    - research/index.md
+    - games/index.md
 
   defaults:
     - 

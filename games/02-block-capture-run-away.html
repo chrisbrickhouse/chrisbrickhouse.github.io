@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block, Capture, Run Away</title>
+    <style>
+      body {
+        margin: auto;
+        width: 70%;
+      }
+      
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 14pt;
+        }
+        
+        h2 {
+          font-size: 12pt;
+        }
+        
+        p {
+          font-size: 12pt;
+          margin: 6pt 0;
+        }
+        
+        .statblock li, .scoreblock li{
+          display: flex;
+          align-items: center;
+          gap: 0 10px;
+          margin: 0.5rem 0;
+        }
+        
+        ul.scoreblock {
+          padding: 0;
+        }
+        
+        .skill, .score {
+          width: 100px;
+        }
+        
+        .statbox, .scorebox {
+          max-width: 20px;
+          max-height: 20px;
+          width: 2vw;
+          height: 2vw;
+          border: 2px solid #333;
+          background-color: white;
+        }
+      }
+      @media (min-width: 601px) {
+        h1 {
+          margin-bottom: 0px;
+        }
+        
+        h2 {
+          opacity: 60%;
+          margin-top: 0px;
+        }
+      
+        .statblock li, .scoreblock li{
+          display: flex;
+          align-items: center;
+          gap: 0 10px;
+          font-family: Arial, sans-serif;
+          margin: 0.5rem 20px;
+        }
+
+        .skill, .score {
+          width: 100px;
+        }
+        
+        .statbox, .scorebox {
+          width: 20px;
+          height: 20px;
+          border: 2px solid #333;
+          background-color: white;
+        }
+      }
+      
+      
+      h3 {
+        text-align: center;
+      }
+      
+      h4::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #333;
+        margin-top: 10px;
+      }
+      
+      .dev-log {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 5%;
+      }
+
+      .statbox {
+        cursor: pointer;
+      }
+      
+      .statbox.filled, .scorebox.filled {
+        background-color: #4CAF50;
+      }
+      
+      .filled.locked {
+        background-color: grey;
+      }
+      
+      .message {
+        display: block;
+        padding: 1rem;
+      }
+      
+      .message.good {
+        background-color: #DAF2CE;
+      }
+      
+      .message.neutral {
+        background-color: #F2ECCE;
+      }
+      
+      .message.bad {
+        background-color: #F2CECE;
+      }
+      
+      .message.terminal {
+        border: solid 1px #000;
+        backdrop-filter: brightness(70%);
+      }
+      
+      .outer-message-log {
+        border: solid 1px #000;
+        max-height: 20rem;
+        overflow: scroll;
+      }
+      
+      /*.message-log-viewer {
+        -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+      }*/
+      
+      .slide-off {
+        display: none;
+      }
+      
+      .hanging-indent-container p {
+        padding-left: 2em;
+        
+    }
+    </style>
+</head>
+<body>
+    <h1>Block, Capture, Run&nbsp;Away</h1>
+    <h2>A one page RPG by CJ Brickhouse</h2>
+    
+    <div id="slide-intro">
+    <p>You are a chess master living under the Evil Empire.
+    <p>The secret police are worried your free thinking and long term planning skills will pose a threat to their control. 
+    <p>However, the good press of a World Chess Champion sure would distract from all those crimes against humanity they're committing! 
+    <p>Can you use your chess skills to block the secret police and run away from the regime before you're captured, king?
+    <p><button id="intro-next" onclick="nextSlide('slide-intro', 'slide-score-defs')">Play</button>
+    </div>
+    
+    
+    <div class="slide-off" id="slide-score-defs">
+    <p> You have three scores:
+      <p><b>Block</b>
+    <div class="hanging-indent-container">
+      <p>Goes from 0 to 10 points and starts at 0.
+      <p>If you reach 10 points before you are captured or run away, the Evil Empire collapses and historians will skip over this awkward phase of your life.
+    </div>
+      <p><b>Capture</b>
+    <div class="hanging-indent-container">
+      <p>Goes from 0 to 10 points and starts at 0.
+      <p>If you reach 10 points, you are captured and suffer a fate worse than death<!--: running the Evil Empire's chess federation!-->
+    </div>
+      <p><b>Run away</b>
+    <div class="hanging-indent-container">
+      <p>Goes from 0 to 10 points and starts at 0.
+      <p>If you reach 10 points before you are captured, you run away and defect during one of your chess matches.<!--Your asylum claim of "gamers are oppressed" is finally granted.-->
+    </div>
+    <p><button id="score-defs-next" onclick="nextSlide('slide-score-defs','slide-stat-select')">Got it</button>
+    </div>
+    
+    
+    <div class="slide-off" id="slide-stat-select">
+    <p>You have 4 skills that represent how good you are at a given phase of a chess game.
+    <p>Click on the boxes below to distribute your <b><span id="skill-points-remaining">12</span> remaining skill points</b>.
+      <ul class="statblock">
+        <li id="prepScore">
+          <span class="skill">Preparation</span>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+        </li>
+        <li id="openScore">
+          <span class="skill">Opening</span>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+        </li>
+        <li id="midScore">
+          <span class="skill">Middle game</span>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+        </li>
+        <li id="endScore">
+          <span class="skill">End game</span>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+          <div class="statbox"></div>
+        </li>
+      </ul>
+    <button id="lock-stats-button" onclick="nextSlide('slide-stat-select','slide-actions')">Confirm stats</button>
+    <p style="display:none;">Your <span class="jargon">Rating</span> is the number of skill points you have put into your skills. A rating can range from 0 to 16. Your maximum starting rating is <span id="ratingMaxStart">12</span>.
+    </div>
+    
+    <div id="slide-actions" class="slide-off">
+    <p>You have two actions:
+    <p><button id="mainButton">Play some chess</button> to try and escape
+    <p><button id="bribeButton">Say something you'll regret</button> to lower your Capture score by 1 at the cost of lowering your Run Away score by 1
+    
+    <ul class="scoreblock">
+        <li id="timerScore"><span class="score">Block</span>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+        </li>
+        <li id="badScore">
+          <span class="score">Capture</span>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+        </li>
+        <li id="goodScore"><span class="score">Run away</span>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+          <div class="scorebox"></div>
+        </li>
+      </ul>
+    <div class="outer-message-log">
+    <span class="message">Message log</span>
+    <div class="message-log-viewer">
+    <div id="message-log">
+    </div>
+    </div>
+    </div>
+    
+    <div id="hidden-counts" style="display:none;">
+    <label for="badCount">Capture:</label>
+    <span id="badCount">0</span>
+    <br>
+    <label for="goodCount">Run away:</label>
+    <span id="goodCount">0</span>
+    <br>
+    <label for="timerCount">Block:</label>
+    <span id="timerCount">0</span>
+    </div>
+    </div>
+    
+    <div id="slide-end" class="slide-off">
+    <div id="end-text">
+    </div>
+    <button onclick="window.location.reload();">Play again</button>
+    <details class="dev-log">
+    <summary>Credits and other stuff</summary>
+    <h4>Concept and balance</h4>
+    <p>The game and flavor text are loosely inspired by the life of Alexander Alekhine, 4th World Chess Champion and a guy with an awkward answer to "what were you doing between 1940 and 1945". He said that he played for the Nazis under duress and that they threatened to harm him or his wife who was trapped in Vichy France. He is alleged to have penned a number of racist chess articles applying Nazi race science to chess. Historians debate his level of involvement with the Nazi government. He claims he tried to organize international matches as a way of finding opportunities to defect&mdash;plans which were unsuccessful. 
+    <p>Alekhine is one of many chess players and sportspeople in general who used international travel as a way of escaping brutal regimes and seeking asylum. Korchnoi, frequent challenger for the Chess World Championship, defected from the USSR in 1976 following a tournament in Amsterdam. Lev Alburt defected from the USSR and went on to win 3 US championships. The world of international sports is full of stories like these, and while Alekhine was the inspiration the scope is wider than him.
+    <p>For the game itself, I used mechanics similar to <i><a href="./01-instruct-for-canada.html">Instruct for Canada</a></i> which are inspired by <a href="https://www.patreon.com/deathbybadger">the one-page RPGs of Oliver Darkshire</a>. Players have three scores: "good", "bad", and "timer". As players take the main action, they randomly increase one of these scores and get one of three endings depending on which score reaches 10 first.
+    <p><i>Block, Capture, Run Away</i> makes two big changes: character stats and roll contests.
+    <p>Character stats let the player customize their character and ultimately give them some control over the randomization. The total number of stat points is the character's Rating, and players can choose to start with a maximum rating of 12. There are 4 stats that are equivalent in terms of importance.
+    <p>Roll contests are how the outcome of the main game play loop is decided. Each loop, we construct a random opponent whose rating is 9 plus the difference of 2d6 giving an opponent rating of 9 +/- 5. These rating points are then distributed randomly across the 4 stats. Then we go through each game phase with the player and opponent rolling a number of d6s equal to 1 plus their character's score in that phase. Highest sum of dice rolls wins that phase (draws are possible but unlikely). The player who wins the most phases wins the roll contest (draws are possible and likely).
+    <p>The combination of character stats and roll contests gives players more agency and ability to explore the system compared to <i>Instruct for Canada</i>.
+    </details>
+    </div>
+    <!-- JavaScript -->
+    <script>
+        // TODO Write better messages
+        function add_message( message, class_ = [""] ) {
+          const message_log = document.getElementById("message-log");
+          var new_message_element = document.createElement('span');
+          new_message_element.classList.add('message');
+          new_message_element.classList.add(...class_);
+          new_message_element.textContent = message;
+          message_log.prepend(new_message_element);
+        }
+        
+        function roll_1d( n_sides ) {
+          // Returns integer between 1 and n_sides (inclusive)
+          return Math.floor(Math.random() * n_sides) + 1;
+        }
+        
+        function roll_pool( n_dice, n_sides ) {
+          //console.log(n_dice);
+          let set_up_pool = Array(n_dice).fill(n_sides);
+          var dice_pool = set_up_pool.map(function(n) {
+            return roll_1d(n);
+          });
+          return dice_pool;
+        }
+        
+        function pool_sum( n_dice, n_sides ) {
+          let pool = roll_pool( n_dice, n_sides )
+          //console.log("pool")
+          //console.log(pool)
+          return pool.reduce((partialSum, a) => partialSum + a, 0);
+        }
+        
+        function incrementCount( countSpan, count ) {
+          let boxes = count_score_map.get(countSpan)
+          count++;
+          countSpan.textContent = count;
+          boxes.children[count].classList.add('filled');
+        }
+        
+        function decrementCount( countSpan, count ) {
+          let boxes = count_score_map.get(countSpan)
+          boxes.children[count].classList.remove('filled');
+          count--;
+          countSpan.textContent = count;
+        }
+        
+        function runGamePhase( playerStat, opponentStat ) {
+            let player_roll = pool_sum( playerStat, 6 );
+            let opponent_roll = pool_sum(opponentStat, 6);
+            let score = player_roll - opponent_roll;
+            console.log(player_roll,opponent_roll)
+            if (score > 0) {
+                return 1;
+            } else if (score < 0) {
+                return -1;
+            }
+            return 0;
+        }
+        
+        function roll_tables() {
+            let badCount = parseInt(badCountSpan.textContent);
+            let goodCount = parseInt(goodCountSpan.textContent);
+            let timerCount = parseInt(timerCountSpan.textContent);
+            let statArray = getStats();
+            let prepStat = statArray[0];
+            let openStat = statArray[1];
+            let midStat = statArray[2];
+            let endStat = statArray[3];
+            let roll_result = roll_1d(6);
+            let table_result = roll_1d(6);
+            let opponent;
+            let opponent_base = 9;
+            let match_score = 0;
+            let message = '';
+            let message_class = '';
+            //console.log(roll_result);
+            // Increment Month
+            if (roll_result === 1){
+                incrementCount( timerCountSpan, timerCount );
+            }
+            opponent = makePlayer(roll_result - table_result + opponent_base)
+            //console.log(opponent)
+            match_score += runGamePhase( prepStat, opponent[0] )
+            match_score += runGamePhase( openStat, opponent[1] )
+            match_score += runGamePhase( midStat, opponent[2] )
+            match_score += runGamePhase( endStat, opponent[3] )
+            
+            if (match_score > 1) {
+              //roll table biased towards increase run away
+              message = message + 'You won! ';
+              if (table_result <= 5) {
+                // Runaway
+                incrementCount( goodCountSpan, goodCount );
+                message = message + 'You are one step closer to escaping.';
+                message_class = 'good';
+              } else {
+                // Capture
+                incrementCount( badCountSpan, badCount )
+                message = message + 'But all that fraternizing has made the secret police suspicious.';
+                message_class = 'bad';
+              }
+            } else if (match_score < 1) {
+              //roll table biased towards increase capture
+              message = message + 'Tough loss. ';
+              if (table_result < 4) {
+                // Capture
+                incrementCount( badCountSpan, badCount );
+                message = message + "Why would the Evil Empire let you play if you're just going to lose?";
+                message_class = 'bad';
+              } else if (table_result > 4) {
+                // Block
+                incrementCount( timerCountSpan, timerCount )
+                message = message + "These things happen.";
+                message_class = 'neutral';
+              } else {
+                // Runaway
+                incrementCount( goodCountSpan, goodCount )
+                message = message + "Your opponent asks if you can fly a MiG?";
+                message_class = 'good';
+              }
+            } else {
+              //roll table biased towards block
+              message = message + "Draw.";
+              if (table_result < 5 ) {
+                // Block
+                incrementCount( timerCountSpan, timerCount );
+                message = message + "Reconsider your choice to play the Berlin Defense.";
+                message_class = 'neutral';
+              } else if (table_result > 5) {
+                // Runaway
+                incrementCount( goodCountSpan, goodCount )
+                message = message + "The end game was so boring the Secret Police are asleep. Now's your chance!";
+                message_class = 'good';
+              } else {
+                // Capture
+                incrementCount( badCountSpan, badCount )
+                message = message + "The only thing the Evil Empire hates more than losers is indecision.";
+                message_class = 'bad';
+              }
+            }
+            add_message(message, [message_class]);
+            console.log(match_score)
+        }
+        
+        function check_end() {
+          let badCount = parseInt(badCountSpan.textContent);
+          let goodCount = parseInt(goodCountSpan.textContent);
+          let timerCount = parseInt(timerCountSpan.textContent);
+          let message = '';
+          let message_class = '';
+          if ( timerCount >= 10 ) {
+            message = "<p>Oh, the empire has collapsed.<p>Let's just ignore this awkward period of your life.";
+            message_class = ['neutral', 'terminal']
+          } else if ( goodCount >= 10 ) {
+            message = '<p>Good news! Your claim that "gamers are oppressed" has been accepted by Obristan and you have been granted asylum!<p>But they have one condition: you must play on their new e-sports team...';
+            message_class = ['good', 'terminal']
+          } else if ( badCount >= 10 ) {
+            message = '<p>"Checkmate" the Secret Police Officer says as he hands you a piece of paper.<p>...<p>A fate worse than death, it seems: a life sentence running the Evil Empire\'s chess federation!';
+            message_class = ['bad', 'terminal']
+          } else {
+            return
+          }
+          if (message_class[1]=='terminal') {
+            document.getElementById('end-text').innerHTML = message;
+            nextSlide('slide-actions','slide-end')
+            return;
+          }
+          add_message(message, message_class);
+          mainButton.removeEventListener('mousedown', roll_tables);
+          mainButton.removeEventListener('mouseup', check_end);
+          bribeButton.removeEventListener('click', useFeat );
+        }
+        
+        function makePlayer(rating) {
+          let opponent_stats = Array(4).fill(0);
+          let running_rating = 0;
+          let index;
+          while ( running_rating < rating ) {
+            index = roll_1d(4) - 1;
+            if ( opponent_stats[index] < 4 ) {
+              opponent_stats[index]++;
+              running_rating++;
+            }
+          }
+          //console.log(opponent_stats);
+          return opponent_stats;
+        }
+        
+        function getStats() {
+          return [
+            prepStatSpan.querySelectorAll('.filled').length,
+            openStatSpan.querySelectorAll('.filled').length,
+            midStatSpan.querySelectorAll('.filled').length,
+            endStatSpan.querySelectorAll('.filled').length
+          ];
+        }
+          
+        
+        const ratingMaxStart = parseInt(document.getElementById('ratingMaxStart').textContent);
+        const skillPointsRemaining = document.getElementById('skill-points-remaining');
+
+        const prepStatSpan = document.getElementById('prepScore');
+        const openStatSpan = document.getElementById('openScore');
+        const midStatSpan = document.getElementById('midScore');
+        const endStatSpan = document.getElementById('endScore');
+        
+        var prepScoreTotal = prepStatSpan.querySelectorAll('.filled').length;
+        var openScoreTotal = openStatSpan.querySelectorAll('.filled').length;
+        var midScoreTotal = midStatSpan.querySelectorAll('.filled').length;
+        var endScoreTotal = endStatSpan.querySelectorAll('.filled').length;
+        
+        const lockStatsButton = document.getElementById('lock-stats-button');
+        const statBoxes = document.querySelectorAll('.statbox');
+        
+        statBoxes.forEach( statBox => {
+          statBox.addEventListener('click', function() {
+            if ( statBox.classList.contains('locked') ){
+              return;
+            }
+            const filled = document.querySelectorAll('.statbox.filled').length;
+            //console.log(filled, ratingMaxStart)
+            if ( filled < ratingMaxStart ) {
+              statBox.classList.toggle('filled');
+            } else {
+              statBox.classList.remove('filled');
+            }
+            skillPointsRemaining.textContent = ratingMaxStart - document.querySelectorAll('.statbox.filled').length; 
+          });
+        });
+        
+        function confirmClick() {
+          statBoxes.forEach(statBox => {
+            statBox.classList.add('locked');
+          });
+          skillPointsRemaining.textContent = 0;
+          add_message( 'Skills confirmed.' , ['neutral']);
+          lockStatsButton.removeEventListener('click',confirmClick)
+        }
+        
+        lockStatsButton.addEventListener('click', confirmClick);
+          
+        
+        const badCountSpan = document.getElementById('badCount');
+        const goodCountSpan = document.getElementById('goodCount');
+        const timerCountSpan = document.getElementById('timerCount');
+        
+        const badScoreBoxes = document.getElementById('badScore');
+        const goodScoreBoxes = document.getElementById('goodScore');
+        const timerScoreBoxes = document.getElementById('timerScore');
+        
+        const count_score_map = new Map();
+        count_score_map.set(badCountSpan,badScoreBoxes)
+        count_score_map.set(goodCountSpan,goodScoreBoxes)
+        count_score_map.set(timerCountSpan,timerScoreBoxes)
+        
+        const mainButton = document.getElementById('mainButton');
+        const bribeButton = document.getElementById('bribeButton');
+        
+        mainButton.addEventListener('mousedown', roll_tables);
+        
+        function useFeat() {
+            let badCount = parseInt(badCountSpan.textContent);
+            let goodCount = parseInt(goodCountSpan.textContent);
+            if (badCount > 0 && goodCount > 0) {
+                decrementCount( badCountSpan, badCount);
+                //badCountSpan.textContent = badCount;
+                if (goodCount <= 1) {
+                    decrementCount( goodCountSpan, goodCount);
+                } else {
+                    decrementCount( goodCountSpan, goodCount);
+                    decrementCount( goodCountSpan, goodCount);
+                }
+                //goodCountSpan.textContent = goodCount;
+            }
+        }
+        mainButton.addEventListener('mouseup', check_end);
+        bribeButton.addEventListener('click', useFeat );
+        
+        function nextSlide( current, target ) {
+          document.getElementById(target).classList.remove('slide-off');
+          document.getElementById(current).classList.add('slide-off');
+        }
+    </script>
+    <script>
+        const collapsible = document.querySelector('.collapsible');
+        const content = document.querySelector('.collapsed-content');
+        const devLogHeader = document.querySelector('#dev-log-header');
+        const devLogShowHeader = "Read the developer's log";
+        const devLogHideHeader = "Hide the developer's log";
+
+        collapsible.addEventListener('click', function () {
+            // Toggle display of content
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            if (content.style.display === 'block') {
+                devLogHeader.textContent = devLogHideHeader;
+            } else {
+                devLogHeader.textContent = devLogShowHeader;
+            }
+        });
+    </script>
+</body>
+</html>
+

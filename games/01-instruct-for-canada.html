@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruct for Canada</title>
+    <style>
+      body {
+        margin: auto;
+        width: 70%;
+      }
+      
+      h1 {
+        margin-bottom: 0px;
+      }
+      
+      h2 {
+        opacity: 60%;
+        margin-top: 0px;
+      }
+      
+      h3 {
+        text-align: center;
+      }
+      
+      h4::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #333;
+        margin-top: 10px;
+      }
+      
+      .dev-log {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 5%;
+      }
+
+      .collapsible {
+        //background-color: #4CAF50;
+        //color: white;
+        cursor: pointer;
+        padding: 10px;
+        //border: none;
+        //text-align: left;
+        //outline: none;
+        //font-size: 18px;
+        //width: 100%;
+        //border-radius: 5px;
+      }
+
+      .collapsed-content {
+        padding: 0 10%;
+        display: none;
+      }
+    </style>
+</head>
+<body>
+    <h1>Instruct for Canada v1.0</h1>
+    <h2>A one page RPG by Chris Brickhouse</h2>
+    
+    <p>thank you for volunteering for Instruct for Canada, an organization where idealistic young adults learn why the education system is broken. In order to feed yourself on your meager stipend, you need to collect apples from your students. But be fast! The semester is short, and your lack of classroom management experience leaves something to be desired.
+    <p> You have three scores:
+    <ul>
+        <li><b>Apples</b> Goes from 0 to 10 and starts at 0. If you collect 10 apples, you will have enough food to survive the winter.</li>
+        <li><b>Chaos</b> Goes from 0 to 10 and starts at 0. If chaos reaches 10, the students launch a coup and you lose your job.</li>
+        <li><b>Months</b> Goes from 0 to 9 and starts at 9. If you run out of months, the semester ends and you get scurvy from your poor nutrition.</li>
+    </ul>
+    <p>You can also <b>Bribe your Students</b> to ensure good behavior. If you give the most popular student an apple, they'll keep the plebs in line.
+    <br>
+    <label for="appleCount">Apples:</label>
+    <span id="appleCount">0</span>
+    <br>
+    <label for="chaosCount">Chaos:</label>
+    <span id="chaosCount">0</span>
+    <br>
+    <label for="monthCount">Months left:</label>
+    <span id="monthCount">9</span>
+    <br><br>
+    <button id="mainButton">Instruct, eh! 🍁</button>
+    <br>
+    <button id="bribeButton">Bribe the kids</button>
+    
+    <details class="dev-log">
+    <summary>Developer's log</summary>
+    <h4>Concept and balance</h4>
+    <p>The game is inspired generally by the lack of investment in education and by a conversation I had with a middle school science teacher about classroom management skills. I used mechanics inspired by <a href="https://www.patreon.com/deathbybadger">the one-page RPGs of Oliver Darkshire</a> where players roll on a table, get/lose points, and win or lose when a point threshold is reached.
+    <p>The three scores are apples, chaos, and months. Following the <a href="https://tvtropes.org/pmwiki/pmwiki.php/Main/AppleForTeacher">apple for teacher trope</a>, the "good" score is apples. The "bad" score is the opposite of a good class: chaos. So the main goal is to get 10 apples before you get 10 chaos. Simple enough, but I want to convey a time pressure because teaching stops. The month score helps by giving a lose condition for taking too long.
+    <p>There are 4 weeks in a month, so on average the month timer ticks every 4th roll (25%). There are 9 months in a school year, so I chose 9 points to start instead of 10. This gives players about 30 rolls before they time out which should be plenty. Apple and chaos results cover the remaining 75% of roll results. I want the two to be about the same, but with a bias towards chaos. The bias towards chaos reflects the game's message that the system is rigged against teachers, and it creates tension by having the chaos score slightly higher than the apple score on average. In the end there's a 36% chance of apples but a 39% chance of chaos.
+    <p>Last I want to add some player agency. The player can decide to exchange an apple to reduce chaos. I started with 1-to-2, so that it can be a "get apples above chaos" power, but in play testing I think 1-to-3 might be better. The player can also do this "bribe" as often as they like, but the month timer introduces an opportunity cost. If you just do a bribe every time chaos gets above apples, you'll eventually run out of months.
+    <h4>Implementation details</h4>
+    <p>The mechanics are inspired by one-page RPGs, and to stick with that spirit, the entire game is one HTML document. That's not just for a fun gag either. The cool thing about physical one-page RPGs is that they are portable. Being small and self-contained, players can easily share them and play them without a bunch of resources, often just a printed page and a d6. The one-html-page RPG has the same portability. Players can download the page, open it like any file, and play anywhere because it is self-contained. I think that is an interesting design constraint especially in an age where the connection between a book page and a web page has been mostly lost. This is, literally, a one-page RPG.
+    <p>In line with physical one-page RPGs, the game runs on d6 rolls under the hood. If you open up the page source, the tables are right there in the javascript. You could print it out and roll on those tables. I could have hard-coded the probabilities, but I like rolling dice. The tables also give an opportunity to add more flavor to the results of the rolls. Without the tables, players just click and watch numbers go up. With the tables, I can have little jokes pop up depending on the outcome of the roll. More fun and more portable.
+    <h4>Conclusion</h4>
+    <p>This is my first game, and the best thing I can say is that it works. I went into it with a concept of a plan, hacked at it for a couple hours, and got something playable. Looking back, I can see the main pillars were verisimilitude, humor, and portability. The scores and mechanics were about simulating the outcomes of teaching, rather than teaching itself. The flavor is humorous. The whole thing should be easy to play and share, even if you don't have an internet connection or even a browser. If I were to take this further, I'd still lean into those. Some ideas for next directions:
+    <ul>
+    <li><b>New feats:</b>I was explaining an early prototype to my friend Eli, whose story inspired the game in the first place, and he suggested another character feature: gain chaos to gain apples. This is an interesting idea, but would need some work. +1 chaos for +1 apple is useless, but +1 chaos for +2 apples is just a free win button. Considering verisimilitude, letting kids get more chaotic is risky. Maybe gain +1 chaos for the <i>chance</i> to get +2 apples or with the <i>risk</i> of getting +2 chaos instead.</li>
+    <li><b>Character stats:</b> An early problem I had was the lack of player agency, and I think this is a weakness of Oliver Darkshire's one-page system in general. For example, not all teachers are equally good at classroom management. Could there be a simple "stat block" that a player creates which nudges the base probabilities I outlined above?</li>
+    <li><b>Printable version:</b> The game was designed for play offline with a d6, but right now you have to actually read the javascript to figure that out. Formatting the tables and rules for printing (ideally on a single page) would make it even more portable.</li>
+    </ul>
+    <p>That said, I think I'd rather move on to the next one-page RPG concept. What drew me to them was that they are small and you can make a bunch of them with similar mechanics. Now that I have a system in place, I can use it for my next idea and iterate there.
+    </details>
+    <!-- JavaScript -->
+    <script>
+        function roll_1d( n_sides ) {
+          return Math.floor(Math.random() * n_sides) + 1;
+        }
+        
+        function roll_tables() {
+            let appleCount = parseInt(appleCountSpan.textContent);
+            let chaosCount = parseInt(chaosCountSpan.textContent);
+            let monthCount = parseInt(monthCountSpan.textContent);
+            let roll_result = roll_1d(6);
+            let table_result = roll_1d(6);
+            console.log(roll_result);
+            // Increment Month
+            if (roll_result === 1){
+                monthCount--;
+                monthCountSpan.textContent = monthCount;
+            }
+            // Roll on apple table
+            if (roll_result === 2){
+                if (table_result <= 4) {
+                    appleCount++
+                    appleCountSpan.textContent = appleCount;
+                }
+                if (table_result > 4) {
+                    chaosCount++;
+                    chaosCountSpan.textContent = chaosCount;
+                }
+            }
+            // Roll on chaos table
+            if ((roll_result > 2) && (roll_result < 6)) {
+                if (table_result <= 1) {
+                    appleCount++;
+                    appleCountSpan.textContent = appleCount;
+                }
+                if ((table_result > 1) && (table_result < 6)) {
+                    chaosCount++;
+                    chaosCountSpan.textContent = chaosCount;
+                }
+                if (table_result === 6) {
+                    monthCount--;
+                    monthCountSpan.textContent = monthCount;
+                }
+            }
+            if (roll_result === 6) {
+                appleCount++;
+                appleCountSpan.textContent = appleCount;
+            }
+        }
+        
+        function check_end() {
+          let appleCount = parseInt(appleCountSpan.textContent);
+          let chaosCount = parseInt(chaosCountSpan.textContent);
+          let monthCount = parseInt(monthCountSpan.textContent);
+          if ( monthCount <= 0 ) {
+            alert("The semester has ended. Better luck next term...");
+          } else if ( chaosCount >= 10 ) {
+            alert("You lost control of the students. They smash a conch shell and war over some kid's glasses. The PTA is going to hate this...");
+          } else if ( appleCount >= 10 ) {
+            alert("You did it! You got enough apples to feed yourself. Your liberal arts degree finally comes in handy.");
+          } else {
+            return
+          }
+          mainButton.removeEventListener('mousedown', roll_tables);
+          mainButton.removeEventListener('mouseup', check_end);
+        }
+        
+        const appleCountSpan = document.getElementById('appleCount');
+        const chaosCountSpan = document.getElementById('chaosCount');
+        const monthCountSpan = document.getElementById('monthCount');
+        const mainButton = document.getElementById('mainButton');
+        const bribeButton = document.getElementById('bribeButton');
+        
+        mainButton.addEventListener('mousedown', roll_tables);
+        
+        mainButton.addEventListener('mouseup', check_end);
+        bribeButton.addEventListener('click', function() {
+            let appleCount = parseInt(appleCountSpan.textContent);
+            let chaosCount = parseInt(chaosCountSpan.textContent);
+            if (appleCount > 0) {
+                appleCount--;
+                appleCountSpan.textContent = appleCount;
+                if (chaosCount <= 1) {
+                    chaosCount = 0;
+                } else {
+                    chaosCount--;
+                    chaosCount--;
+                }
+                chaosCountSpan.textContent = chaosCount;
+            }
+        });
+    </script>
+    <script>
+        const collapsible = document.querySelector('.collapsible');
+        const content = document.querySelector('.collapsed-content');
+        const devLogHeader = document.querySelector('#dev-log-header');
+        const devLogShowHeader = "Read the developer's log";
+        const devLogHideHeader = "Hide the developer's log";
+
+        collapsible.addEventListener('click', function () {
+            // Toggle display of content
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            if (content.style.display === 'block') {
+                devLogHeader.textContent = devLogHideHeader;
+            } else {
+                devLogHeader.textContent = devLogShowHeader;
+            }
+        });
+    </script>
+</body>
+</html>
+

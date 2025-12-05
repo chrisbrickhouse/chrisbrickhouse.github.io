@@ -2,20 +2,20 @@
 layout: home
 
 title: Christian Brickhouse
-list_title: Blog posts
-header_image: assets/cb_111321_0154.jpg
-header_alt: A headshot of Christian Brickhouse
 ---
-Hello! I'm Christian Brickhouse.
+Hello! I'm CJ Brickhouse. Welcome to my personal website where I occasionally post updates on my latest projects.
 
-I like making cool stuff. My specialties are human subjects experiments and writing software. 
+In my professional life, I'm the Chess Program Manager at the Mechanics' Institute Chess Club. Founded in 1954, the Mechanics' Institute is the oldest continually operating Chess Club in North America, and I manage our outreach efforts to schools across San Francisco. The views on my personal website are my own and do not represent the views of my employer.
 
-Some cool stuff I work on:
-- An inventory management platform for Pokemon card sellers to learn Django and PostgreSQL and also to keep track of my Pokemon card collection
-- A framework for controlling the rumble packs of a PS4 controller during experiments to study the effect of haptic feedback on language processing
-- A diarization and transcription preprocessor for a suite of acoustic analysis software to learn about ML integrations
-- A full stack widget for Wikipedia to deliver interactive chess games
+# One page RPGs
+A series of one (web)page role playing games that I make when the mood strikes me.
+1. [Instruct for Canada]({{site.baseurl}}/games/01-instruct-for-canada.html)
+2. [Block, Capture, Attack]({{site.baseurl}}/games/02-block-capture-run-away.html)
 
-And it's all freely licensed and open source!
+# Language variation and change
+1. Changes in California Vowels ([Master's Thesis]({{site.baseurl}}/research/preprints/Brickhouse2020_CaliVowelContrastMaintenance_QP2.pdf))
+2. Language change in Papua New Guinea ([Conference Paper]({{site.baseurl}}/research/preprints/Brickhouse%26Lindsey2021_APLLHandout.pdf))
 
-You should take a [look at my résumé](/cv/resume)
+# Other stuff
+- Wikipedia: I'm a Wikipedian and have had at least 7 articles featured on the front page. I also do back room work and community organizing. Ask me about it in person as I try not to connect the two online.
+- Gaming: I like playing a lot of different games though working at a chess club that tends to be my main game. Others include go, Pokemon (TCG and VGC), Blood on the Clocktower, Wingspan, Dungeons and Dragons, and Dominion to name just a few favorites.
