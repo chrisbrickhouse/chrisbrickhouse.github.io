@@ -5,7 +5,7 @@ title: Christian Brickhouse
 ---
 Hello! I'm CJ Brickhouse. Welcome to my personal website where I occasionally post updates on my latest projects.
 
-In my professional life, I'm the Chess Program Manager at the Mechanics' Institute Chess Club. Founded in 1954, the Mechanics' Institute is the oldest continually operating Chess Club in North America, and I manage our outreach efforts to schools across San Francisco. The views on my personal website are my own and do not represent the views of my employer.
+In my professional life, I'm the Chess Program Manager at the Mechanics' Institute Chess Club. Founded in 1854, the Mechanics' Institute is the oldest continually operating Chess Club in North America, and I manage our outreach efforts to schools across San Francisco. The views on my personal website are my own and do not represent the views of my employer.
 
 # One page RPGs
 A series of one (web)page role playing games that I make when the mood strikes me.
