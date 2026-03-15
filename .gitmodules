@@ -1,0 +1,3 @@
+[submodule "games/WikiSim"]
+	path = games/WikiSim
+	url = git@github.com:chrisbrickhouse/WikiSim.git
