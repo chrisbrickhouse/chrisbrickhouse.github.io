@@ -3,7 +3,7 @@
   permalink: /weblog/:year/:month/:day/:title
   theme: minima
   author: Christian Brickhouse
-  email: me@christianbrickhouse.com
+  email: cj@christianbrickhouse.com
   show_excerpts: true
   github_username: chrisbrickhouse
   git_repo: chrisbrickhouse.github.io
