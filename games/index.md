@@ -8,4 +8,4 @@ I like games and in my spare time I make them. The current series I'm working on
 2. [Block, Capture, Attack]({{site.baseurl}}/games/02-block-capture-run-away.html)
 
 During the 2026 SF Wiki GameJam I also made an incremental game.
-* [WikiSim]({{site.baseurl}}/games/WikiSim/main.html)
+* [WikiSim]({{site.baseurl}}/games/WikiSim)
